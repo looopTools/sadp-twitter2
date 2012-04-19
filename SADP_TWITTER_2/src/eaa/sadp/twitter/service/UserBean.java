@@ -3,13 +3,18 @@ package eaa.sadp.twitter.service;
 import java.io.Serializable;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+
+import eaa.sadp.twitter.model.User;
 
 @Named
 @ApplicationScoped
 public class UserBean implements Serializable {
 
 	private String name, password;
+	@Inject
+	private Service service;
 	
 	public UserBean(){
 		setName("");
@@ -32,9 +37,8 @@ public class UserBean implements Serializable {
 	}
 	
 	public String login(){
-		//String dir = "error";
 		
-		if(name.equals("lars") && password.equals("1212")){
+		if(service.verifyUser(new User(name, password))){
 			return "index";
 		}else{
 			return "error";
