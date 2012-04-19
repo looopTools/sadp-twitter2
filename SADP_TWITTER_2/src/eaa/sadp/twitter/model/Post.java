@@ -6,7 +6,9 @@ public class Post {
 	public String context; //Max length 280 chars
 	public User user;
 	
-	public Post(){
+	public Post(String context, User user){
+		this.context = context;
+		this.user = user;
 		
 	}
 
@@ -24,7 +26,6 @@ public class Post {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-	
+	}	
 
 }

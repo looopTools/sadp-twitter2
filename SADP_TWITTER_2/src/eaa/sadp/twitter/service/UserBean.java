@@ -38,12 +38,20 @@ public class UserBean implements Serializable {
 	
 	public String login(){
 		
-		if(service.verifyUser(new User(name, password))){
+		if(service.verifyUser(new User(name, password, false))){
 			return "index";
 		}else{
 			return "error";
 		}
 		
+	}
+	
+	public String register(){
+		if(service.createUser(name, password)){
+			return "index";
+		}else{
+			return "error";
+		}
 	}
 	
 	

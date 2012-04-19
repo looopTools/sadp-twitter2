@@ -25,4 +25,15 @@ public class Service implements Serializable{
 		}
 		return false;
 	}
+	
+	public boolean createUser(String username, String password){
+		
+		if(dao.getUsers().get(username) != null){
+			return false;
+		}
+		else{
+			dao.addUser(new User(username, password, false));
+			return true;
+		}
+	}
 }
