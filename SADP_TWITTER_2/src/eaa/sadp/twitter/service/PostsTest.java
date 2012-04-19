@@ -18,8 +18,8 @@ public class PostsTest implements Serializable {
 
 	public PostsTest(){
 		posts = new ArrayList<Post>();
-		User usr1 = new User("malik", "test");
-		User usr2 = new User("lars", "1212");
+		User usr1 = new User("malik", "test", false);
+		User usr2 = new User("lars", "1212", false);
 		posts.add(new Post("Hello world!", usr1));
 		posts.add(new Post("lars is 1337", usr2));
 		posts.add(new Post("Windows sucks!!", usr2));
