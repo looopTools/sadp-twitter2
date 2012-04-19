@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import eaa.sadp.twitter.dao.Dao;
+import eaa.sadp.twitter.model.Post;
 import eaa.sadp.twitter.model.User;
 
 @Named
@@ -34,6 +35,19 @@ public class Service implements Serializable{
 		else{
 			dao.addUser(new User(username, password, false));
 			return true;
+		}
+	}
+	
+	public boolean addPost(String username, String context){
+		User user = dao.getUsers().get(username); 
+		
+		if(user != null){
+			
+			dao.addPost(new Post(context, user));
+			return true;
+		}
+		else{
+			return false;
 		}
 	}
 }

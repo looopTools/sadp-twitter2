@@ -3,13 +3,14 @@ package eaa.sadp.twitter.service;
 import java.io.Serializable;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import eaa.sadp.twitter.model.User;
 
 @Named
-@ApplicationScoped
+@SessionScoped
 public class UserBean implements Serializable {
 
 	private String name, password;
