@@ -15,7 +15,10 @@ public class AdminBean implements Serializable{
 	@Inject
 	Service s;
 	
-	User selectedUser;
+	private User selectedUser;
+	
+	private boolean newAdmin;
+	private String newPassword, newUsername;
 	
 	public AdminBean(){
 		
@@ -41,5 +44,32 @@ public class AdminBean implements Serializable{
 		else{
 			return "error";
 		}
+	}
+	
+	public void setNewAdmin(String newAdmin){
+		
+		if(newAdmin.equals("true")){
+			this.newAdmin = true;
+		}
+		else if(newAdmin.equals("false")){
+			this.newAdmin = false;
+		}
+	}
+	
+	public boolean getNewAdmin(){
+		return this.newAdmin;
+	}
+	
+	public void setNewUsername(String newUsername){
+		this.newUsername = newUsername;
+	}
+	
+	public String getNewUsername(){
+		return this.newUsername;
+	}
+	
+	public void setNewPassword(String newPassword){
+		
+		this.newPassword = newPassword;
 	}
 }
