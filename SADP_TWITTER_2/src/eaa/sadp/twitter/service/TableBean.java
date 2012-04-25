@@ -22,22 +22,23 @@ public class TableBean implements Serializable{
 		
 		
 		users = new ArrayList<User>();
-		setUpdata();
+//		setUpdata();
 		 
 	}
 	
 	private void setUpdata(){
-		HashMap<String, User> cusers = new HashMap<String, User>(s.getUsers());
-		ArrayList<String> keyset = new ArrayList(cusers.keySet());
 		
-		for(String s : keyset){
-			users.add(cusers.get(s));
+		ArrayList<User> keyset = new ArrayList(s.getUsers().values());
+		
+		for(User u : keyset){
+			users.add(u);
 		}
 	}
 	
 	public List<User> getUsers(){
-		System.out.println(users);
-		return users;
+//		System.out.println(users);
+//		return users;
+		return new ArrayList<User>(s.getUsers().values());
 	}
 
 }
