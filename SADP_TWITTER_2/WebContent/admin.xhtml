@@ -12,7 +12,9 @@
 </h:head>
 
 <h:body>
-	<p:dataTable id="basic" var="user" value="#{tableBean.users}">
+	<h:form>
+	<p:dataTable id="basic" var="user" value="#{tableBean.users}" 
+	rowKey="#{user.username}" selection="#{adminBean.selectedUser}" selectionMode="single">
 		<p:column id="modelHeader">
 			<f:facet name="header">
 				User
@@ -31,7 +33,11 @@
 			</f:facet>
 			<h:outputText value="#{user.admin}"/>
 		</p:column>
-	
 	</p:dataTable>
+	
+		<p:commandButton value="DELETE" action="#{adminBean.destroyUser}" />
+		<p:commandButton value="EDIT" action="#{adminBean.editUser}" />
+	</h:form>
+	
 </h:body>
 </html>

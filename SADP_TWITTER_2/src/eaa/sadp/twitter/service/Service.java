@@ -54,4 +54,8 @@ public class Service implements Serializable{
 	public Map<String, User> getUsers(){
 		return dao.getUsers();
 	}
+	
+	public void deleteUser(String userName){
+		dao.deleteUSer(userName);
+	}
 }

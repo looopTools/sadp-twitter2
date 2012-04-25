@@ -34,6 +34,10 @@ public class Dao implements Serializable{
 	public void addUser(User user){
 		users.put(user.getUsername(), user);
 	}
+	
+	public void deleteUSer(String userName){
+		users.remove(userName);
+	}
 
 	public Map<String, Post> getPosts() {
 		return new HashMap<String, Post>(posts);
