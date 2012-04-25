@@ -50,4 +50,8 @@ public class Service implements Serializable{
 			return false;
 		}
 	}
+	
+	public Map<String, User> getUsers(){
+		return dao.getUsers();
+	}
 }

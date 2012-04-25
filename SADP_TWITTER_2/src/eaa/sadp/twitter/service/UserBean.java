@@ -1,8 +1,8 @@
 package eaa.sadp.twitter.service;
 
 import java.io.Serializable;
+import java.util.Map;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -53,6 +53,10 @@ public class UserBean implements Serializable {
 		}else{
 			return "error";
 		}
+	}
+	
+	public Map<String, User> getUser(){
+		return service.getUsers();
 	}
 	
 	
