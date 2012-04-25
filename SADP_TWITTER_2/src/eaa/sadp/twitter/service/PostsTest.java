@@ -28,4 +28,8 @@ public class PostsTest implements Serializable {
 	public List<Post> getPosts(){
 		return new ArrayList<Post>(posts);
 	}
+	
+	public void addPost(Post post){
+		posts.add(post);
+	}
 }

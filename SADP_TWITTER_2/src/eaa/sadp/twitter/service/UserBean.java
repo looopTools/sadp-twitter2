@@ -40,7 +40,7 @@ public class UserBean implements Serializable {
 	public String login(){
 		
 		if(service.verifyUser(new User(name, password, false))){
-			return "index";
+			return "user";
 		}else{
 			return "error";
 		}

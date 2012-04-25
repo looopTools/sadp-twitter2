@@ -6,6 +6,8 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import eaa.sadp.twitter.model.Post;
+
 @Named
 @SessionScoped
 public class PostBean implements Serializable {
@@ -13,10 +15,14 @@ public class PostBean implements Serializable {
 	private String context, username;
 	@Inject
 	private Service service;
+	@Inject
+	private PostsTest postsTest;
+	@Inject
+	private UserBean userBean;
 	
 	public PostBean(){
 		username = "lars"; //TODO: Change from a static version later
-		
+		context = "";
 	}
 	
 	public String getContext() {
@@ -36,8 +42,10 @@ public class PostBean implements Serializable {
 	}
 	
 	public String commit(){
+		postsTest.addPost(new Post(context, userBean.getUser().get(userBean.getName())));
 		if(service.addPost(username, context)){
-			return "index";
+			context = "";
+			return "user";
 		}else{
 			return "error";
 		}
