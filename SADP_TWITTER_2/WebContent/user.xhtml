@@ -16,12 +16,12 @@
 	<h:form>
 		<p:panelGrid columns="2">
 		<p:inputTextarea rows="10" cols="30" value="#{postBean.context}" autoResize="true" />
-    	<p:commandButton value="Post" action="#{postBean.commit()}" ajax="false"/>
+    	<p:commandButton value="Post" action="#{postBean.commit}" ajax="false"/>
     	</p:panelGrid>
 	</h:form>
 	<h:form>
 	<p:panelGrid columns="1">
-		<p:dataTable value="#{postsTest.posts}" var="post">
+		<p:dataTable value="#{postBean.getTop(10)}" var="post">
 			<f:facet name="header">Posts</f:facet>
 			<p:column>
 				<p:panelGrid columns="1">
