@@ -1,6 +1,8 @@
 package eaa.sadp.twitter.service;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -11,6 +13,7 @@ import eaa.sadp.twitter.dao.Dao;
 import eaa.sadp.twitter.model.Post;
 import eaa.sadp.twitter.model.User;
 
+@SuppressWarnings("serial")
 @Named
 @ApplicationScoped
 public class Service implements Serializable{
@@ -18,13 +21,13 @@ public class Service implements Serializable{
 	@Inject
 	private Dao dao;
 	
-	public boolean verifyUser(User user){
+	public User verifyUser(User user){
 		Map<String, User> users = dao.getUsers();
 		User tempUser = users.get(user.getUsername());
 		if (tempUser != null && tempUser.getPassword().equals(user.getPassword())){
-			return true;
+			return tempUser;
 		}
-		return false;
+		return null;
 	}
 	
 	public boolean createUser(String username, String password){
@@ -57,5 +60,11 @@ public class Service implements Serializable{
 	
 	public void deleteUser(String userName){
 		dao.deleteUSer(userName);
+	}
+
+	public List<Post> getTop(int maxNumberOfPosts, User user) {
+		List<Post> sortedPosts = dao.getPostsForUsers(user.getFollowing());
+		Collections.sort(sortedPosts);
+		return sortedPosts.size() > maxNumberOfPosts? sortedPosts.subList(0, maxNumberOfPosts) : sortedPosts;
 	}
 }

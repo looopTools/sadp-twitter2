@@ -9,16 +9,20 @@ import javax.inject.Named;
 
 import eaa.sadp.twitter.model.User;
 
+@SuppressWarnings("serial")
 @Named
 @SessionScoped
 public class UserBean implements Serializable {
 
 	private String name, password;
+	private User user;
 	@Inject
 	private Service service;
 	
 	public UserBean(){
 		setName("");
+		setPassword("");
+		user = null;
 	}
 
 	public String getName() {
@@ -38,13 +42,12 @@ public class UserBean implements Serializable {
 	}
 	
 	public String login(){
-		
-		if(service.verifyUser(new User(name, password, false))){
+		User tempUser = service.verifyUser(new User(name, password, false));
+		if (tempUser != null){
+			setUser(tempUser);
 			return "user";
-		}else{
-			return "error";
 		}
-		
+		return "error";
 	}
 	
 	public String register(){
@@ -55,8 +58,16 @@ public class UserBean implements Serializable {
 		}
 	}
 	
-	public Map<String, User> getUser(){
+	public Map<String, User> getUsers(){
 		return service.getUsers();
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public User getUser(){
+		return user;
 	}
 	
 	
