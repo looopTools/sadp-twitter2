@@ -9,10 +9,14 @@
 
 <h:head>
 	<title>Login</title>
+	<h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 
 <h:body>
-	<h1>Login or register</h1>
+	<header>
+		<h:graphicImage value="resources/images/logo.png"/>
+	</header>
+	<h1> -Login or register</h1>
 	<h:form>
 		<p:panelGrid columns="2">
 			<h:outputText value="Name:"/>
@@ -20,7 +24,8 @@
 			<h:outputText value="Password:"/>
 			<p:password value="#{userBean.password}" />
 		</p:panelGrid>
-		<p:panelGrid columns="1">
+		<br />
+		<p:panelGrid columns="2" styleClass="buttons">
 		<p:commandButton value="Login" action="#{userBean.login}"/>
 		<p:commandLink value="Register" action="register"/>
 		</p:panelGrid>
