@@ -27,17 +27,37 @@ public class Dao implements Serializable{
 		// String is username and Post is the post
 		posts = new HashMap<String, List<Post>>();
 		
+		
+		// add a few initial users and posts
 		User lars = new User("lars", "1212", true);
 		User malik = new User("malik", "test", true);
+		User martin = new User("martin", "test", false);
+		User daniel = new User("daniel", "test", false);
 		
 		lars.addFollowing(malik);
+		lars.addFollowing(martin);
 		malik.addFollowing(lars);
+		malik.addFollowing(daniel);
+		martin.addFollowing(daniel);
+		daniel.addFollowing(martin);
 		
 		addUser(lars);
+		addPost(new Post("Working on the admin page", lars));
 		addPost(new Post("Still haven't succeeded in getting Malik to change to BSD! :(", lars));
+		addPost(new Post("That f***ing admin page won't work!", lars));
 		
 		addUser(malik);
+		addPost(new Post("Just got the users stream page to work. :)", malik));
 		addPost(new Post("I just change to Fedora.", malik));
+		addPost(new Post("So far quite satisfied with Fedora", malik));
+		
+		addUser(martin);
+		addPost(new Post("Kører nu Xubuntu", martin));
+		addPost(new Post("Ahh, kaffe på computeren!", martin));
+		
+		addUser(daniel);
+		addPost(new Post("Ny bærbar i fødselsdagsgave.", daniel));
+		addPost(new Post("Vi skal lave et spil i CNDS.", daniel));
 	}
 	
 	public Map<String, User> getUsers(){
@@ -68,6 +88,4 @@ public class Dao implements Serializable{
 		}
 		return concatenatedPosts;
 	}
-
-	
 }
