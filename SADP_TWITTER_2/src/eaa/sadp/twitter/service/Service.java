@@ -2,8 +2,10 @@ package eaa.sadp.twitter.service;
 
 import java.io.Serializable;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -66,5 +68,13 @@ public class Service implements Serializable{
 		List<Post> sortedPosts = dao.getPostsForUsers(user.getFollowing());
 		Collections.sort(sortedPosts);
 		return sortedPosts.size() > maxNumberOfPosts? sortedPosts.subList(0, maxNumberOfPosts) : sortedPosts;
+	}
+	
+	public List<Post> getMyTop(int maxNumberOfPosts, User user){
+		Set<User> me = new HashSet<User>();
+		me.add(user);
+		List<Post> myPosts = dao.getPostsForUsers(me);
+		Collections.sort(myPosts);
+		return myPosts.size() > maxNumberOfPosts? myPosts.subList(0, maxNumberOfPosts) : myPosts;
 	}
 }

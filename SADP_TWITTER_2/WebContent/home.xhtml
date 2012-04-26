@@ -8,11 +8,18 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Name</title>
+	<title>Login</title>
 </h:head>
 
 <h:body>
-	<h1>Welcome <h:outputText value="#{userBean.name}"/></h1>
+	<h1>Welcome <h:outputText value="#{userBean.user.username}"/></h1>
+	<h:form>
+		<p:panelGrid columns="2">
+			<p:commandButton value="Stream" action="stream" ajax="false"/>
+			<p:commandButton value="Admin page" action="admin" ajax="false" rendered="#{userBean.user.admin}"/>
+			<p:commandButton value="Logout" action="#{userBean.logout}"/>
+		</p:panelGrid>
+	</h:form>
 	<h:form>
 		<p:panelGrid columns="2">
 		<p:inputTextarea rows="10" cols="30" value="#{postBean.context}" autoResize="true" />
@@ -21,8 +28,8 @@
 	</h:form>
 	<h:form>
 	<p:panelGrid columns="1">
-		<p:dataTable value="#{postBean.getTop(10)}" var="post">
-			<f:facet name="header">Posts</f:facet>
+		<p:dataTable value="#{postBean.getMyTop(10)}" var="post">
+			<f:facet name="header">My posts</f:facet>
 			<p:column>
 				<p:panelGrid columns="1">
 				<h3><h:outputText value="#{post.user.username}"/></h3>
@@ -32,6 +39,6 @@
 			</p:column>
 		</p:dataTable>
 	</p:panelGrid>
-	</h:form>
+	</h:form>	
 </h:body>
 </html>

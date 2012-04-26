@@ -47,6 +47,10 @@ public class PostBean implements Serializable {
 		return new ArrayList<Post>(posts);
 	}
 	
+	public List<Post> getMyTop(int maxNumberOfPosts){
+		return new ArrayList<Post>(service.getMyTop(maxNumberOfPosts, userBean.getUser()));
+	}
+	
 	public String commit(){
 		if(service.addPost(userBean.getUser().getUsername(), context)){
 			context = "";

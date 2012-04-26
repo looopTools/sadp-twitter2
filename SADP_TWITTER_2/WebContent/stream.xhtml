@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Name</title>
+</h:head>
+
+<h:body>
+	<h1>Welcome <h:outputText value="#{userBean.user.username}"/></h1>
+	<h:form>
+		<p:commandButton value="Home" action="home" ajax="false"/>
+		<p:commandButton value="Admin page" action="admin" ajax="false" rendered="#{userBean.user.admin}"/>
+	</h:form>
+	<h:form>
+		<p:panelGrid columns="2">
+		<p:inputTextarea rows="10" cols="30" value="#{postBean.context}" autoResize="true" />
+    	<p:commandButton value="Post" action="#{postBean.commit}" ajax="false"/>
+    	</p:panelGrid>
+	</h:form>
+	<h:form>
+	<p:panelGrid columns="1">
+		<p:dataTable value="#{postBean.getTop(10)}" var="post">
+			<f:facet name="header">Stream</f:facet>
+			<p:column>
+				<p:panelGrid columns="1">
+				<h3><h:outputText value="#{post.user.username}"/></h3>
+				<h:outputText value="#{post.context}"/>
+				<hr/>
+				</p:panelGrid>
+			</p:column>
+		</p:dataTable>
+	</p:panelGrid>
+	</h:form>
+</h:body>
+</html>

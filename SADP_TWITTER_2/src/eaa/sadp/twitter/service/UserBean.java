@@ -45,7 +45,7 @@ public class UserBean implements Serializable {
 		User tempUser = service.verifyUser(new User(name, password, false));
 		if (tempUser != null){
 			setUser(tempUser);
-			return "user";
+			return "stream";
 		}
 		return "error";
 	}
@@ -70,5 +70,10 @@ public class UserBean implements Serializable {
 		return user;
 	}
 	
-	
+	public String logout(){
+		user = null;
+		name = "";
+		password = "";
+		return "login";
+	}
 }
