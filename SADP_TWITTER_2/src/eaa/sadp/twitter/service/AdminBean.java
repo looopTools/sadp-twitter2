@@ -45,31 +45,52 @@ public class AdminBean implements Serializable{
 			return "error";
 		}
 	}
-	
-	public void setNewAdmin(String newAdmin){
-		
-		if(newAdmin.equals("true")){
-			this.newAdmin = true;
-		}
-		else if(newAdmin.equals("false")){
-			this.newAdmin = false;
-		}
+
+	public boolean isNewAdmin() {
+		return newAdmin;
 	}
-	
-	public boolean getNewAdmin(){
-		return this.newAdmin;
+
+	public void setNewAdmin(boolean newAdmin) {
+		this.newAdmin = newAdmin;
 	}
-	
-	public void setNewUsername(String newUsername){
+
+	public String getNewUsername() {
+		return newUsername;
+	}
+
+	public void setNewUsername(String newUsername) {
 		this.newUsername = newUsername;
 	}
-	
-	public String getNewUsername(){
-		return this.newUsername;
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
 	}
 	
-	public void setNewPassword(String newPassword){
+	public void updateUser(){
+
+		if(newPassword.equals("")){
+			selectedUser.setAdmin(newAdmin);
+			selectedUser.setUsername(newUsername);
+		}
+		else if(newUsername.equals("")){
+			selectedUser.setAdmin(newAdmin);
+			selectedUser.setPassword(newPassword);
+		}else if(newUsername.equals("") && newPassword.equals("")){
+			selectedUser.setAdmin(newAdmin);
+		}else{
+			selectedUser.setAdmin(newAdmin);
+			selectedUser.setPassword(newPassword);
+			selectedUser.setUsername(newUsername);
+		}
 		
-		this.newPassword = newPassword;
+		
+	}
+	
+	public String cancel(){
+		return "admin";
 	}
 }

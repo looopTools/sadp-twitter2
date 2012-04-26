@@ -27,5 +27,21 @@
     		<h:outputText value="#{adminBean.selectedUser.admin}"/>
 		</p:panelGrid>
 	</h:form>
+	<br />
+	<h:form>
+		<p:panelGrid columns="2">
+			<h:outputLabel for="username" value="Username: "/>
+    		<p:inputText value="#{adminBean.newUsername}"/>
+			
+			<h:outputLabel for="password" value="Password: "/>
+    		<p:password value="#{adminBean.newPassword}" />
+    		
+    		
+    		<h:outputLabel for="admin" value="Admin: "/>
+    		<p:selectBooleanCheckbox value="#{adminBean.newAdmin}"/>
+		</p:panelGrid>
+		<p:commandButton value="Update" action="#{adminBean.updateUser}" ajax="false"/>
+		<p:commandButton value="Cancel" action="#{adminBean.cancel}" ajax="false"/>
+	</h:form>
 </h:body>
 </html>
