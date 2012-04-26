@@ -9,10 +9,15 @@
 
 <h:head>
 	<title>Register</title>
+	<h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 
 <h:body>
 	<h:form>
+		<header>
+			<h:graphicImage value="resources/images/logo.png"/>
+		</header>
+		<h1> -Registration page</h1>
 		<p:panelGrid columns="2">
 			<h:outputText value="Name:"/>
 			<h:inputText value="#{userBean.name}"/>
@@ -21,6 +26,8 @@
 		</p:panelGrid>
 		<h:commandButton value="register" action="#{userBean.register}"/>
 	</h:form>
-
+	<footer>
+		&copy; Malik Lass Lund &amp; Lars Nielsen 2012
+	</footer>
 </h:body>
 </html>

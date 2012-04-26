@@ -8,10 +8,15 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Name</title>
+	<title>Stream</title>
+	<h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 
 <h:body>
+	<header>
+		<h:graphicImage value="resources/images/logo.png"/>
+	</header>
+
 	<h1>Welcome <h:outputText value="#{userBean.user.username}"/></h1>
 	<h:form>
 		<p:commandButton value="Home" action="home" ajax="false"/>
@@ -37,5 +42,8 @@
 		</p:dataTable>
 	</p:panelGrid>
 	</h:form>
+	<footer>
+		&copy; Malik Lass Lund &amp; Lars Nielsen 2012
+	</footer>
 </h:body>
 </html>
