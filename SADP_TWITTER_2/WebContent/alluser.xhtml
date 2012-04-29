@@ -19,6 +19,11 @@
 	</header>
 	<h1> -Overview of users</h1>
 	<h:form>
+		<p:panelGrid columns="3">
+			<p:button value="Home" outcome="home" />
+		</p:panelGrid>
+	</h:form>
+	<h:form>
 		<p:dataTable id="basic" var="user" value="#{tableBean.users}"
 		rowKey="#{user.username}" selection="#{adminBean.selectedUser}" selectionMode="single">
 			<p:column id="modelHeader">

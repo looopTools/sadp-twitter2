@@ -17,10 +17,11 @@
 		<h:graphicImage value="resources/images/logo.png"/>
 	</header>
 
-	<h1>Welcome <h:outputText value="#{userBean.user.username}"/></h1>
+	<h1><h:outputText value="#{userBean.user.username}"/></h1>
 	<h:form>
-		<p:commandButton value="Home" action="home" ajax="false"/>
-		<p:commandButton value="Admin page" action="admin" ajax="false" rendered="#{userBean.user.admin}"/>
+		<p:button value="Home" outcome="home" />
+		<p:button value="Show users" outcome="alluser"/>
+		<p:button value="Admin page" outcome="admin" rendered="#{userBean.user.admin}"/>
 	</h:form>
 	<h:form>
 		<p:panelGrid columns="2">

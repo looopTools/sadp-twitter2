@@ -16,12 +16,12 @@
 	<header>
 		<h:graphicImage value="resources/images/logo.png"/>
 	</header>
-	<h1>Welcome <h:outputText value="#{userBean.user.username}"/></h1>
+	<h1><h:outputText value="#{userBean.user.username}"/></h1>
 	<h:form>
 		<p:panelGrid columns="3">
-			<p:commandButton value="Stream" action="stream" ajax="false"/>
-			<p:commandButton value="Admin page" action="admin" ajax="false" rendered="#{userBean.user.admin}"/>
-			<p:commandButton value="Logout" action="#{userBean.logout}"/>
+			<p:button value="Stream" outcome="stream" />
+			<p:button value="Admin page" outcome="admin" rendered="#{userBean.user.admin}"/>
+			<p:button value="Logout" action="#{userBean.logout}"/>
 		</p:panelGrid>
 	</h:form>
 	<h:form>
@@ -44,5 +44,8 @@
 		</p:dataTable>
 	</p:panelGrid>
 	</h:form>	
+	<footer>
+		&copy; Malik Lass Lund &amp; Lars Nielsen 2012
+	</footer>
 </h:body>
 </html>
