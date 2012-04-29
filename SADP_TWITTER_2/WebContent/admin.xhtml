@@ -18,6 +18,9 @@
 	</header>
 	<h1>-Administration page</h1>
 	<h:form>
+		<p:button value="Back" outcome="home"/>
+	</h:form>
+	<h:form>
 	<p:dataTable id="basic" var="user" value="#{tableBean.users}" 
 	rowKey="#{user.username}" selection="#{adminBean.selectedUser}" selectionMode="single">
 		<p:column id="modelHeader">

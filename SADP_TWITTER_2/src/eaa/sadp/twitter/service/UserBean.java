@@ -46,9 +46,9 @@ public class UserBean implements Serializable {
 		User tempUser = service.verifyUser(new User(name, password, false));
 		if (tempUser != null){
 			setUser(tempUser);
-			return "stream";
+			return "success";
 		}
-		return "error";
+		return "failure";
 	}
 	
 	public String register(){
@@ -96,11 +96,12 @@ public class UserBean implements Serializable {
 		return userFollowingList.contains(otherUser) ? "Unfollow" : "Follow";
 	}
 	
-	public void reverseFollowing(){
+	public String reverseFollowing(){
 		if (user.getFollowing().contains(otherUser)){
 			user.removeFollowing(otherUser);
 		} else {
 			user.addFollowing(otherUser);
 		}
+		return "followChange";
 	}
 }

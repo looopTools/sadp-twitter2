@@ -21,7 +21,7 @@
 		<p:panelGrid columns="3">
 			<p:button value="Stream" outcome="stream" />
 			<p:button value="Admin page" outcome="admin" rendered="#{userBean.user.admin}"/>
-			<p:button value="Logout" action="#{userBean.logout}"/>
+			<p:commandButton value="Logout" action="#{userBean.logout}"/>
 		</p:panelGrid>
 	</h:form>
 	<h:form>
