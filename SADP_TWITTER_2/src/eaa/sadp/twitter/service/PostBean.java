@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import eaa.sadp.twitter.model.Post;
+import eaa.sadp.twitter.model.User;
 
 @SuppressWarnings("serial")
 @Named
@@ -43,7 +44,12 @@ public class PostBean implements Serializable {
 	}
 	
 	public List<Post> getTop(int maxNumberOfPosts){
-		List<Post> posts = service.getTop(maxNumberOfPosts, userBean.getUser());
+		List<Post> posts = service.getFollowingTop(maxNumberOfPosts, userBean.getUser());
+		return new ArrayList<Post>(posts);
+	}	
+	
+	public List<Post> getTop(User user, int maxNumberOfPosts){
+		List<Post> posts = service.getTop(maxNumberOfPosts, user);
 		return new ArrayList<Post>(posts);
 	}
 	

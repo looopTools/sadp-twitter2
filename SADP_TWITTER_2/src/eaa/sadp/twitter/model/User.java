@@ -55,4 +55,8 @@ public class User {
 		this.following = following;
 	}
 
+	public void removeFollowing(User otherUser) {
+		following.remove(otherUser);
+	}
+
 }

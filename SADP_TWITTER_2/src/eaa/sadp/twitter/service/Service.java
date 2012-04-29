@@ -64,8 +64,16 @@ public class Service implements Serializable{
 		dao.deleteUSer(userName);
 	}
 
-	public List<Post> getTop(int maxNumberOfPosts, User user) {
+	public List<Post> getFollowingTop(int maxNumberOfPosts, User user) {
 		List<Post> sortedPosts = dao.getPostsForUsers(user.getFollowing());
+		Collections.sort(sortedPosts);
+		return sortedPosts.size() > maxNumberOfPosts? sortedPosts.subList(0, maxNumberOfPosts) : sortedPosts;
+	}
+	
+	public List<Post> getTop(int maxNumberOfPosts, User user){
+		Set<User> userMap = new HashSet<User>();
+		userMap.add(user);
+		List<Post> sortedPosts = dao.getPostsForUsers(userMap);
 		Collections.sort(sortedPosts);
 		return sortedPosts.size() > maxNumberOfPosts? sortedPosts.subList(0, maxNumberOfPosts) : sortedPosts;
 	}

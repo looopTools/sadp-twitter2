@@ -2,6 +2,7 @@ package eaa.sadp.twitter.service;
 
 import java.io.Serializable;
 import java.util.Map;
+import java.util.Set;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -15,7 +16,7 @@ import eaa.sadp.twitter.model.User;
 public class UserBean implements Serializable {
 
 	private String name, password;
-	private User user;
+	private User user, otherUser;
 	@Inject
 	private Service service;
 	
@@ -75,5 +76,31 @@ public class UserBean implements Serializable {
 		name = "";
 		password = "";
 		return "login";
+	}
+	
+	public String showUser(User user){
+		this.setOtherUser(user);
+		return "user";
+	}
+
+	public User getOtherUser() {
+		return otherUser;
+	}
+
+	public void setOtherUser(User otherUser) {
+		this.otherUser = otherUser;
+	}
+	
+	public String following(){
+		Set<User> userFollowingList = user.getFollowing();
+		return userFollowingList.contains(otherUser) ? "Unfollow" : "Follow";
+	}
+	
+	public void reverseFollowing(){
+		if (user.getFollowing().contains(otherUser)){
+			user.removeFollowing(otherUser);
+		} else {
+			user.addFollowing(otherUser);
+		}
 	}
 }
