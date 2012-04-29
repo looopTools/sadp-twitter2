@@ -20,9 +20,12 @@
 	<h:form>
 		<p:panelGrid columns="3">
 			<p:button value="Stream" outcome="stream" />
-			<p:button value="Home" outcome="home"/>
+			<p:commandButton value="Home" action="home"/>
 			<p:commandButton value="#{userBean.following()}" 
-							 action="#{userBean.reverseFollowing}"/>
+							 action="#{userBean.reverseFollowing}" ajax="false">
+				<f:ajax event="click" render="@this"/>
+			</p:commandButton>							 
+							 
 		</p:panelGrid>
 	</h:form>
 	

@@ -75,12 +75,12 @@ public class UserBean implements Serializable {
 		user = null;
 		name = "";
 		password = "";
-		return "login";
+		return "logout";
 	}
 	
 	public String showUser(User user){
 		this.setOtherUser(user);
-		return "user";
+		return "showuser";
 	}
 
 	public User getOtherUser() {

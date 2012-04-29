@@ -11,12 +11,23 @@
     	<navigation-case>
     		<from-outcome>success</from-outcome>
     		<to-view-id>/stream.xhtml</to-view-id>
+    		<redirect/>
     	</navigation-case>
     	<navigation-case>
     		<from-outcome>failure</from-outcome>
     		<to-view-id>/error.xhtml</to-view-id>
+    		<redirect/>
     	</navigation-case>
     </navigation-rule>
+    <navigation-rule>
+    	<from-view-id>/alluser.xhtml</from-view-id>
+    	<navigation-case>
+    		<from-outcome>showuser</from-outcome>
+    		<to-view-id>/user.xhtml</to-view-id>
+    		<redirect/>
+    	</navigation-case>
+    </navigation-rule>
+    <!-- 
     <navigation-rule>
     	<from-view-id>/user.xhtml</from-view-id>
     	<navigation-case>
@@ -24,11 +35,13 @@
     		<to-view-id>/user.xhtml</to-view-id>
     	</navigation-case>
     </navigation-rule>
+     -->
     <navigation-rule>
     	<from-view-id>/home.xhtml</from-view-id>
     	<navigation-case>
-    		<from-outcome>login</from-outcome>
+    		<from-outcome>logout</from-outcome>
     		<to-view-id>/login.xhtml</to-view-id>
+    		<redirect/>
     	</navigation-case>
     </navigation-rule>
 

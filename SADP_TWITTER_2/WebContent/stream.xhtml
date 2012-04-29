@@ -19,9 +19,9 @@
 
 	<h1><h:outputText value="#{userBean.user.username}"/></h1>
 	<h:form>
-		<p:button value="Home" outcome="home" />
-		<p:button value="Show users" outcome="alluser"/>
-		<p:button value="Admin page" outcome="admin" rendered="#{userBean.user.admin}"/>
+		<p:commandButton value="Home" action="home" />
+		<p:commandButton value="Show users" action="alluser"/>
+		<p:commandButton value="Admin page" action="admin" rendered="#{userBean.user.admin}"/>
 	</h:form>
 	<h:form>
 		<p:panelGrid columns="2">
