@@ -15,30 +15,19 @@ import eaa.sadp.twitter.model.User;
 @SessionScoped
 public class TableBean implements Serializable{
 	
-	private List<User> users;
 	@Inject
 	Service s;
+	@Inject
+	UserBean userBean;
+	
 	public TableBean(){
 		
-		
-		users = new ArrayList<User>();
-//		setUpdata();
-		 
-	}
-	
-	private void setUpdata(){
-		
-		ArrayList<User> keyset = new ArrayList(s.getUsers().values());
-		
-		for(User u : keyset){
-			users.add(u);
-		}
 	}
 	
 	public List<User> getUsers(){
-//		System.out.println(users);
-//		return users;
-		return new ArrayList<User>(s.getUsers().values());
+		List<User> users = new ArrayList<User>(s.getUsers().values());
+		users.remove(userBean.getUser());
+		return users;
 	}
 
 }
