@@ -60,7 +60,7 @@ public class PostBean implements Serializable {
 	public String commit(){
 		if(service.addPost(userBean.getUser().getUsername(), context)){
 			context = "";
-			return "user";
+			return "stream";
 		}else{
 			return "error";
 		}

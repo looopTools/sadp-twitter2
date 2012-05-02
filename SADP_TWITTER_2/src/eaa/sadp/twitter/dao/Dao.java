@@ -77,8 +77,35 @@ public class Dao implements Serializable{
 		return new HashMap<String, List<Post>>(posts);
 	}
 	
-	public void addPost(Post post){
+	public void addPost(Post post) throws IndexOutOfBoundsException{
+		
 		posts.get(post.getUser().getUsername()).add(post);
+		
+		if(post.getContext().contains("@")){
+			String userName = "";
+			int i = post.getContext().indexOf("@");
+			
+			int j = i+1;
+			char currentChar = post.getContext().charAt(j);
+			
+			while(j < post.getContext().length() && currentChar != ' '){
+				currentChar = post.getContext().charAt(j);
+				userName = userName + currentChar;
+				System.out.println(userName);
+				j++;
+				
+			}
+			
+			User u = isAlive(userName);
+			System.out.println(u.getUsername());
+			if(u != null){
+				posts.get(u.getUsername()).add(post);
+			}
+			
+			
+			
+		}
+		
 	}
 
 	public List<Post> getPostsForUsers(Set<User> following) {
@@ -87,5 +114,19 @@ public class Dao implements Serializable{
 			concatenatedPosts.addAll(posts.get(u.getUsername()));
 		}
 		return concatenatedPosts;
+	}
+	
+	public User isAlive(String userName){
+		User user = null;
+		
+		ArrayList<User> currentUsers = new ArrayList<User>(users.values());
+		
+		for(User u : currentUsers){
+			if(u.getUsername().equals(userName)){
+				user = u;
+			}
+		}
+		
+		return user;
 	}
 }
