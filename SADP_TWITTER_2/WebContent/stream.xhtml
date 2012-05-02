@@ -19,7 +19,7 @@
 
 	<h1><h:outputText value="#{userBean.user.username}"/></h1>
 	<h:form>
-		<p:commandButton value="Home" action="home" />
+		<p:commandButton value="Home" action="home" ajax="false"/>
 		<p:commandButton value="Show users" action="alluser"/>
 		<p:commandButton value="Admin page" action="admin" rendered="#{userBean.user.admin}"/>
 	</h:form>

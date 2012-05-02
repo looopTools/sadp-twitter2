@@ -19,8 +19,8 @@
 	<h1><h:outputText value="#{userBean.user.username}"/></h1>
 	<h:form>
 		<p:panelGrid columns="3">
-			<p:button value="Stream" outcome="stream" />
-			<p:button value="Admin page" outcome="admin" rendered="#{userBean.user.admin}"/>
+			<p:commandButton value="Stream" action="stream" ajax="false" />
+			<p:commandButton value="Admin page" action="admin" rendered="#{userBean.user.admin}"/>
 			<p:commandButton value="Logout" action="#{userBean.logout}"/>
 		</p:panelGrid>
 	</h:form>
