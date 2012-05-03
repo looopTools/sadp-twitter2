@@ -21,7 +21,7 @@
 		<p:button value="Back" outcome="home"/>
 	</h:form>
 	<h:form>
-	<p:dataTable id="basic" var="user" value="#{tableBean.users}" 
+	<p:dataTable id="basic" var="user" value="#{tableBean.users}" resizableColumns="true" 
 	rowKey="#{user.username}" selection="#{adminBean.selectedUser}" selectionMode="single">
 		<p:column id="modelHeader">
 			<f:facet name="header">

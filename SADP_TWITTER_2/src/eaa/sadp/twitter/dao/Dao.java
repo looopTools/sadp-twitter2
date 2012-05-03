@@ -97,7 +97,7 @@ public class Dao implements Serializable{
 			}
 			
 			User u = isAlive(userName);
-			System.out.println(u.getUsername());
+			//System.out.println(u.getUsername());
 			if(u != null){
 				posts.get(u.getUsername()).add(post);
 			}
